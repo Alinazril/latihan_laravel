@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Kategori;
+use Illuminate\Http\Request;
+
 class KategoriController extends Controller
 {
     public function index()
@@ -15,36 +16,35 @@ class KategoriController extends Controller
             'message' => 'Daftar Kategori',
             'data' => $kategori,
         ];
-        return response()->json($response,200);
+        return response()->json($response, 200);
     }
 
     public function store(Request $request)
-     {
+    {
         $kategori = new Kategori();
         $kategori->nama_kategori = $request->nama_kategori;
         $kategori->save();
         return response()->json([
             'success' => true,
             'message' => 'data berhasil disimpan',
-        ],201);
+        ], 201);
     }
-
 
     public function show($id)
-     {
+    {
         $kategori = Kategori::find($id);
         if ($kategori) {
-        return response()->json([
-            'succes' => true,
-            'message' => 'detail kategori',
-            'data' => $kategori,
-        ],200);
-    } else {
-        return response()->json([
-            'success' => false ,
-            'message' => 'data tidak ditemukan',
-        ],404);
-    }
+            return response()->json([
+                'succes' => true,
+                'message' => 'detail kategori',
+                'data' => $kategori,
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'data tidak ditemukan',
+            ], 404);
+        }
     }
     public function update(Request $request, $id)
     {
@@ -53,15 +53,15 @@ class KategoriController extends Controller
             $kategori->nama_kategori = $request->nama_kategori;
             $kategori->save();
             return response()->json([
-            'success' => true,
-            'message' => 'data berhasil diperbarui',
-        ],200);
-    } else {
-        return response()->json([
-            'success' => false ,
-            'message' => 'data tidak ditemukan',
-        ],404);
-    }
+                'success' => true,
+                'message' => 'data berhasil diperbarui',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'data tidak ditemukan',
+            ], 404);
+        }
     }
 
     public function destroy($id)
@@ -69,15 +69,15 @@ class KategoriController extends Controller
         $kategori = Kategori::find($id);
         if ($kategori) {
             $kategori->delete();
-        return response()->json([
-            'success' => true,
-            'message' => 'data' , $kategori->nama_kategori, 'berhasil dihapus',
-        ]);
-    } else {
-        return response()->json([
-            'success' => false ,
-            'message' => 'data tidak ditemukan',
-        ],404);
-    }
+            return response()->json([
+                'success' => true,
+                'message' => 'data', $kategori->nama_kategori, 'berhasil dihapus',
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'data tidak ditemukan',
+            ], 404);
+        }
     }
 }
