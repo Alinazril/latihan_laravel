@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AktorController;
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Authcontroller;
 use App\Http\Controllers\Api\GenreController;
 use App\Http\Controllers\Api\KategoriController;
 use Illuminate\Http\Request;
@@ -12,11 +12,11 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::middleware((['auth:sanctum']))->group(function () {
-    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('logout', [Authcontroller::class, 'logout']);
     Route::resource('kategori', KategoriController::class);
     Route::resource('genre', GenreController::class);
     Route::resource('aktor', AktorController::class);
 });
 
-Route::post('login', [AuthController::class, 'login']);
-Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [Authcontroller::class, 'login']);
+Route::post('register', [Authcontroller::class, 'register']);
