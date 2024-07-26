@@ -9,7 +9,7 @@ use Auth;
 use Validator;
 use Illuminate\Http\Request;
 
-class AuthController extends Controller
+class Authcontroller extends Controller
 {
     public function register(Request $request)
     {

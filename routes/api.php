@@ -2,7 +2,8 @@
 use App\Http\Controllers\Api\KategoriController;
 use App\Http\Controllers\Api\AktorController;
 use App\Http\Controllers\Api\GenreController;
-use App\Http\controllers\Api\AuthController;
+use App\Http\controllers\Api\Authcontroller;
+use App\Http\Controller\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,6 @@ Route::delete('genre/{id}', [GenreController::class,'destroy']);
 // });
 //auth route
 
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [Authcontroller::class, 'register']);
+Route::post('login', [Authcontroller::class, 'login']);
 
