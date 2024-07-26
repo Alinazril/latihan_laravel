@@ -2,7 +2,7 @@
 use App\Http\Controllers\Api\KategoriController;
 use App\Http\Controllers\Api\AktorController;
 use App\Http\Controllers\Api\GenreController;
-use App\Http\controllers\Api\Authcontroller;
+use App\Http\Controllers\Api\Authcontroller;
 use App\Http\Controller\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
