@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kategori;
+use App\Models\kategori;
 use Illuminate\Http\Request;
 
-class KategoriController extends Controller
+class kategoriController extends Controller
 {
     public function index()
     {
-        $kategori = Kategori::latest()->get();
+        $kategori = kategori::latest()->get();
         $response = [
             'success' => true,
-            'message' => 'Daftar Kategori',
+            'message' => 'Daftar kategori',
             'data' => $kategori,
         ];
         return response()->json($response, 200);
@@ -21,7 +21,7 @@ class KategoriController extends Controller
 
     public function store(Request $request)
     {
-        $kategori = new Kategori();
+        $kategori = new kategori();
         $kategori->nama_kategori = $request->nama_kategori;
         $kategori->save();
         return response()->json([
@@ -32,7 +32,7 @@ class KategoriController extends Controller
 
     public function show($id)
     {
-        $kategori = Kategori::find($id);
+        $kategori = kategori::find($id);
         if ($kategori) {
             return response()->json([
                 'succes' => true,
@@ -48,7 +48,7 @@ class KategoriController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $kategori = Kategori::find($id);
+        $kategori = kategori::find($id);
         if ($kategori) {
             $kategori->nama_kategori = $request->nama_kategori;
             $kategori->save();
@@ -66,7 +66,7 @@ class KategoriController extends Controller
 
     public function destroy($id)
     {
-        $kategori = Kategori::find($id);
+        $kategori = kategori::find($id);
         if ($kategori) {
             $kategori->delete();
             return response()->json([
